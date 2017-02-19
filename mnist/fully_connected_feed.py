@@ -142,7 +142,7 @@ def run_training():
     eval_correct = mnist.evaluation(logits, labels_placeholder)
 
     # Build the summary operation based on the TF collection of Summaries.
-    summary_op = tf.merge_all_summaries()
+    summary_op = tf.summary.merge_all()
 
     # Add the variable initializer Op.
     init = tf.initialize_all_variables()
@@ -154,7 +154,7 @@ def run_training():
     sess = tf.Session()
 
     # Instantiate a SummaryWriter to output summaries and the Graph.
-    summary_writer = tf.train.SummaryWriter(FLAGS.train_dir, sess.graph)
+    summary_writer = tf.summary.FileWriter(FLAGS.train_dir, sess.graph)
 
     # And then after everything is built:
 
